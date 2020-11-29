@@ -18,7 +18,7 @@ char zona1[4] = "", zona2[4] = "", zona3[4] = "", zona4[4] = "", zona5[4] = "", 
 
 FILE *archivo_1, *archivo_2, *archivo_3, *archivo_4;
 
-int producciones = 20;
+int producciones = 40;
 
 void *productor1(void *args)
 {
@@ -30,7 +30,7 @@ void *productor1(void *args)
         //sem_wait(&ALL_SEM->sem_aux_p);
         if (sem_trywait(&ALL_SEM->sem_1_p) == 0)
         {
-            sprintf(zona1, "%s", "1111\0");
+            sprintf(zona1, "%s", "1111");
             printf("Estoy produciendo %s en zona1 %d\n", zona1, i);
             i++;
             sem_post(&ALL_SEM->sem_1_c);
@@ -38,7 +38,7 @@ void *productor1(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_2_p)) == 0)
         {
-            sprintf(zona2, "%s", "1111\0");
+            sprintf(zona2, "%s", "1111");
             printf("Estoy produciendo %s en zona2 %d\n", zona2, i);
             i++;
             sem_post(&(ALL_SEM->sem_2_c));
@@ -46,7 +46,7 @@ void *productor1(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_3_p)) == 0)
         {
-            sprintf(zona3, "%s", "1111\0");
+            sprintf(zona3, "%s", "1111");
             printf("Estoy produciendo %s en zona3 %d\n", zona3, i);
             i++;
             sem_post(&(ALL_SEM->sem_3_c));
@@ -54,7 +54,7 @@ void *productor1(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_4_p)) == 0)
         {
-            sprintf(zona4, "%s", "1111\0");
+            sprintf(zona4, "%s", "1111");
             printf("Estoy produciendo %s en zona4 %d\n", zona4, i);
             i++;
             sem_post(&(ALL_SEM->sem_4_c));
@@ -62,7 +62,7 @@ void *productor1(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_5_p)) == 0)
         {
-            sprintf(zona5, "%s", "1111\0");
+            sprintf(zona5, "%s", "1111");
             printf("Estoy produciendo %s en zona5 %d\n", zona5, i);
             i++;
             sem_post(&(ALL_SEM->sem_5_c));
@@ -70,7 +70,7 @@ void *productor1(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_6_p)) == 0)
         {
-            sprintf(zona6, "%s", "1111\0");
+            sprintf(zona6, "%s", "1111");
             printf("Estoy produciendo %s en zona6 %d\n", zona6, i);
             i++;
             sem_post(&(ALL_SEM->sem_6_c));
@@ -89,7 +89,7 @@ void *productor2(void *args)
         //sem_wait(&ALL_SEM->sem_aux_p);
         if (sem_trywait(&(ALL_SEM->sem_1_p)) == 0)
         {
-            sprintf(zona1, "%s", "2222\0");
+            sprintf(zona1, "%s", "2222");
             printf("Estoy produciendo %s en zona1 %d\n", zona1, i);
             i++;
             sem_post(&(ALL_SEM->sem_1_c));
@@ -97,7 +97,7 @@ void *productor2(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_2_p)) == 0)
         {
-            sprintf(zona2, "%s", "2222\0");
+            sprintf(zona2, "%s", "2222");
             printf("Estoy produciendo %s en zona2 %d\n", zona2, i);
             i++;
             sem_post(&(ALL_SEM->sem_2_c));
@@ -113,7 +113,7 @@ void *productor2(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_4_p)) == 0)
         {
-            sprintf(zona4, "%s", "2222\0");
+            sprintf(zona4, "%s", "2222");
             printf("Estoy produciendo %s en zona4 %d\n", zona4, i);
             i++;
             sem_post(&(ALL_SEM->sem_4_c));
@@ -121,7 +121,7 @@ void *productor2(void *args)
         }
         else if (sem_trywait(&(ALL_SEM->sem_5_p)) == 0)
         {
-            sprintf(zona5, "%s", "2222\0");
+            sprintf(zona5, "%s", "2222");
             printf("Estoy produciendo %s en zona5 %d\n", zona5, i);
             i++;
             sem_post(&(ALL_SEM->sem_5_c));
@@ -465,10 +465,10 @@ int main(int argc, char const *argv[])
         return -1;
     if (0 != pthread_create(&productor_2, NULL, productor2, &sems))
         return -1;
-    /*  if (0 != pthread_create(&productor_3, NULL, productor3, &sems))
+    if (0 != pthread_create(&productor_3, NULL, productor3, &sems))
         return -1;
     if (0 != pthread_create(&productor_4, NULL, productor4, &sems))
-        return -1; */
+        return -1;
     if (0 != pthread_create(&consumidor_1, NULL, consumidor, &sems))
         return -1;
     if (0 != pthread_create(&consumidor_2, NULL, consumidor, &sems))
@@ -478,8 +478,8 @@ int main(int argc, char const *argv[])
 
     pthread_join(productor_1, NULL);
     pthread_join(productor_2, NULL);
-    /* pthread_join(productor_3, NULL);
-    pthread_join(productor_4, NULL); */
+    pthread_join(productor_3, NULL);
+    pthread_join(productor_4, NULL); 
     pthread_join(consumidor_1, NULL);
     pthread_join(consumidor_2, NULL);
     pthread_join(consumidor_3, NULL);
