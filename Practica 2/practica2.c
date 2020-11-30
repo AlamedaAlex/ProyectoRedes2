@@ -247,182 +247,243 @@ void *consumidor(void *args)
 {
     SEMAPH *ALL_SEM = (SEMAPH *)args;
     int i = 0;
+    char datos[4];
     while (producciones > 1)
     {
         //sem_wait(&ALL_SEM->sem_aux_c);
         if (sem_trywait(&(ALL_SEM->sem_1_c)) == 0)
         {
             if (strcmp(zona1, "1111") == 0)
+                strcpy(datos, zona1);
+            else if (strcmp(zona1, "2222") == 0)
+                strcpy(datos, zona1);
+            else if (strcmp(zona1, "3333") == 0)
+                strcpy(datos, zona1);
+            else if (strcmp(zona1, "4444") == 0)
+                strcpy(datos, zona1);
+            sem_post(&(ALL_SEM->sem_1_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona1);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona1, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona1);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona1, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona1);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona1, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona1);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_1_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         else if (sem_trywait(&(ALL_SEM->sem_2_c)) == 0)
         {
             if (strcmp(zona2, "1111") == 0)
+                strcpy(datos, zona2);
+            else if (strcmp(zona2, "2222") == 0)
+                strcpy(datos, zona2);
+            else if (strcmp(zona2, "3333") == 0)
+                strcpy(datos, zona2);
+            else if (strcmp(zona2, "4444") == 0)
+                strcpy(datos, zona2);
+            sem_post(&(ALL_SEM->sem_2_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona2);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona2, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona2);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona2, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona2);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona2, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona2);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_2_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         else if (sem_trywait(&(ALL_SEM->sem_3_c)) == 0)
         {
             if (strcmp(zona3, "1111") == 0)
+                strcpy(datos, zona3);
+            else if (strcmp(zona3, "2222") == 0)
+                strcpy(datos, zona3);
+            else if (strcmp(zona3, "3333") == 0)
+                strcpy(datos, zona3);
+            else if (strcmp(zona3, "4444") == 0)
+                strcpy(datos, zona3);
+            sem_post(&(ALL_SEM->sem_3_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona3);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona3, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona3);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona3, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona3);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona3, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona3);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_3_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         else if (sem_trywait(&(ALL_SEM->sem_4_c)) == 0)
         {
             if (strcmp(zona4, "1111") == 0)
+                strcpy(datos, zona4);
+            else if (strcmp(zona4, "2222") == 0)
+                strcpy(datos, zona4);
+            else if (strcmp(zona4, "3333") == 0)
+                strcpy(datos, zona4);
+            else if (strcmp(zona4, "4444") == 0)
+                strcpy(datos, zona4);
+            sem_post(&(ALL_SEM->sem_4_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona4);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona4, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona4);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona4, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona4);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona4, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona4);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_4_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         else if (sem_trywait(&(ALL_SEM->sem_5_c)) == 0)
         {
             if (strcmp(zona5, "1111") == 0)
+                strcpy(datos, zona5);
+            else if (strcmp(zona5, "2222") == 0)
+                strcpy(datos, zona5);
+            else if (strcmp(zona5, "3333") == 0)
+                strcpy(datos, zona5);
+            else if (strcmp(zona5, "4444") == 0)
+                strcpy(datos, zona5);
+            sem_post(&(ALL_SEM->sem_5_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona5);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona5, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona5);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona5, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona5);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona5, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona5);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_5_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         else if (sem_trywait(&(ALL_SEM->sem_6_c)) == 0)
         {
             if (strcmp(zona6, "1111") == 0)
+                strcpy(datos, zona6);
+            else if (strcmp(zona6, "2222") == 0)
+                strcpy(datos, zona6);
+            else if (strcmp(zona6, "3333") == 0)
+                strcpy(datos, zona6);
+            else if (strcmp(zona6, "4444") == 0)
+                strcpy(datos, zona6);
+            sem_post(&(ALL_SEM->sem_6_p));
+            if (strcmp(datos, "1111") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a1);
-                fprintf(archivo_1, "%s\n", zona6);
+                fprintf(archivo_1, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a1);
             }
-            else if (strcmp(zona6, "2222") == 0)
+            else if (strcmp(datos, "2222") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a2);
-                fprintf(archivo_2, "%s\n", zona6);
+                fprintf(archivo_2, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a2);
             }
-            else if (strcmp(zona6, "3333") == 0)
+            else if (strcmp(datos, "3333") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a3);
-                fprintf(archivo_3, "%s\n", zona6);
+                fprintf(archivo_3, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a3);
             }
-            else if (strcmp(zona6, "4444") == 0)
+            else if (strcmp(datos, "4444") == 0)
             {
                 sem_wait(&ALL_SEM->sem_a4);
-                fprintf(archivo_4, "%s\n", zona6);
+                fprintf(archivo_4, "%s\n", datos);
                 sem_post(&ALL_SEM->sem_a4);
             }
+            sem_wait(&ALL_SEM->sem_aux_c);
             producciones--;
-            sem_post(&(ALL_SEM->sem_6_p));
+            sem_post(&ALL_SEM->sem_aux_c);
         }
         //sem_post(&ALL_SEM->sem_aux_c);
     }
@@ -479,7 +540,7 @@ int main(int argc, char const *argv[])
     pthread_join(productor_1, NULL);
     pthread_join(productor_2, NULL);
     pthread_join(productor_3, NULL);
-    pthread_join(productor_4, NULL); 
+    pthread_join(productor_4, NULL);
     pthread_join(consumidor_1, NULL);
     pthread_join(consumidor_2, NULL);
     pthread_join(consumidor_3, NULL);
