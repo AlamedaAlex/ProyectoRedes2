@@ -16,7 +16,7 @@ typedef struct semaph
 } SEMAPH;
 
 //Zonas criticas para escribir dato.
-char zona1[4] = "", zona2[4] = "", zona3[4] = "", zona4[4] = "", zona5[4] = "", zona6[4] = "";
+char zona1[5] = "", zona2[5] = "", zona3[5] = "", zona4[5] = "", zona5[4] = "", zona6[5] = "";
 
 FILE *archivo_1, *archivo_2, *archivo_3, *archivo_4;
 
